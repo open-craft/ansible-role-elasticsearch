@@ -24,6 +24,23 @@ The port to listen for HTTP connections on.
 
 Whether to allow inline scripting against ElasticSearch. You should read the following link as there are possible security implications for enabling these options: [Enable Dynamic Scripting](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#enable-dynamic-scripting). Available options include: `true`, `false`, and `sandbox`.
 
+    ENABLE_REVERSE_PROXY: false
+
+Whether to configure a reverse proxy (nginx) in front of Elasticsearch. This is useful if you need to connect securely through the public internet.
+
+    reverse_proxy_listen_port: 9201
+
+Which port the reverse proxy should listen on to forward authenticated requests to Elasticsearch.
+
+    reverse_proxy_auth_file: "/etc/nginx/.passwd"
+
+The location of the auth credentials file the role generates and uses.
+
+    reverse_proxy_auth_username: admin
+    reverse_proxy_auth_password: admin
+
+The username and password needed to authenticate to Elasticsearch. **You should set this explicitly in production**.
+
 ## Dependencies
 
   - geerlingguy.java

@@ -1,0 +1,20 @@
+- name: Create password file for authenticating through nginx
+  command: printf "{{ reverse_proxy_auth_username }}:$(openssl passwd -crypt {{ reverse_proxy_auth_password }})n" > {{ reverse_proxy_auth_file }}
+
+- name: Copy nginx site configuration
+  template:
+    src: elasticsearch-nginx.j2
+    dest: /etc/nginx/sites-available/elasticsearch
+
+- name: Enable nginx site configuration
+  file:
+    src: /etc/nginx/sites-available/elasticsearch
+    dest: /etc/nginx/sites-enabled/elasticsearch
+    state: link
+  notify: restart nginx
+
+- name: Open nginx's listen port for reverse proxying to Elasticsearch on the firewall
+  ufw:
+    rule: allow
+    port: {{ nginx_listen_port }}
+    proto: tcp
