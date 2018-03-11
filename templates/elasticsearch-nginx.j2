@@ -13,6 +13,9 @@ http {
     auth_basic "Protected Elasticsearch";
     auth_basic_user_file {{ reverse_proxy_auth_file }};
 
+    access_log /var/log/nginx/elasticsearch/nginx.access.log;
+    error_log /var/log/nginx/elasticsearch/nginx.error.log;
+
     location / {
       proxy_pass http://elasticsearch;
       proxy_redirect off;

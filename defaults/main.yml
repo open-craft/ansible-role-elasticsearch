@@ -11,6 +11,6 @@ elasticsearch_log_dir: "/var/log/elasticsearch"
 
 ENABLE_REVERSE_PROXY: false
 reverse_proxy_listen_port: 9201
-reverse_proxy_auth_file: "/etc/nginx/.passwd"
+reverse_proxy_auth_file: "/etc/nginx/.elasticsearch.passwd"
 reverse_proxy_auth_username: "admin"
 reverse_proxy_auth_password: "admin"

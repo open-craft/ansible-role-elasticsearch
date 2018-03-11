@@ -32,7 +32,7 @@ Whether to configure a reverse proxy (nginx) in front of Elasticsearch. This is 
 
 Which port the reverse proxy should listen on to forward authenticated requests to Elasticsearch.
 
-    reverse_proxy_auth_file: "/etc/nginx/.passwd"
+    reverse_proxy_auth_file: "/etc/nginx/.elasticsearch.passwd"
 
 The location of the auth credentials file the role generates and uses.
 
